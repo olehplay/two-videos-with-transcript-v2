@@ -1,0 +1,686 @@
+<!-- FIRST VIDEO -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    <style>
+      /* Custom Player Styles */
+      .custom-player1 .plyr--video .plyr__controls {
+        background-color: #1e2635;
+        padding-bottom: 15px;
+        padding-top: 15px;
+      }
+
+      .custom-player1 .plyr__control {
+        color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__control:hover,
+      .custom-player1 .plyr--video .plyr__control[aria-expanded="true"] {
+        color: white;
+      }
+
+      .custom-player1 .plyr__progress--played {
+        background-color: #4f5e77;
+      }
+
+      .custom-player1 .plyr__progress--buffer {
+        background-color: #36445c;
+      }
+
+      .custom-player1 .plyr__volume--display {
+        color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__control.plyr__tab-focus,
+      .custom-player1 .plyr__control[aria-expanded="true"] {
+        background-color: #ff8a00;
+        color: #323232;
+      }
+
+      .custom-player1 .plyr__menu__value[data-value="0.5"] {
+        color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__controls .plyr__controls__item.plyr__time {
+        font-size: 16px;
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      .custom-player1 .plyr__menu__container .plyr__control > span {
+        font-family: "Hind Siliguri", sans-serif;
+        align-items: inherit;
+        display: flex;
+        width: 100%;
+        color: #36445c;
+        font-size: 16px;
+      }
+
+      .custom-player1 .plyr__control--overlaid svg {
+        left: 5px;
+        position: relative;
+        fill: white;
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+      }
+
+      .custom-player1 .plyr__progress .plyr__tooltip {
+        font-size: 16px;
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      .custom-player1 .plyr__progress input[type="range"] {
+        cursor: pointer;
+      }
+
+      .custom-player1 .plyr__control {
+        color: white;
+      }
+
+      .plyr__control.plyr__control--overlaid {
+        background-color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__progress input[type="range"] {
+        color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__volume input[type="range"] {
+        color: #ff8a00;
+        cursor: pointer;
+      }
+
+      .custom-player1 .plyr__control:hover {
+        background-color: #ff8a00;
+        color: white !important;
+      }
+
+      .custom-player1
+        .plyr__menu__container
+        .plyr__control[role="menuitemradio"][aria-checked="true"]:before {
+        background-color: #ff8a00;
+      }
+
+      .custom-player1 .plyr__control:hover span {
+        color: white;
+      }
+
+      .plyr--video {
+        border: 3px solid #4f5e77;
+        border-radius: 10px;
+      }
+
+      /* Custom Transcript Styles */
+      .transcript1 {
+        margin-top: 20px;
+        padding: 10px;
+        line-height: 1.5;
+        height: 200px;
+        overflow-y: auto;
+        border: 3px solid #4f5e77;
+        border-radius: 10px;
+        background-color: white;
+      }
+
+      .highlight1 {
+        background-color: #ff8a00;
+        color: white;
+        font-weight: 600;
+        padding: 5px;
+        transition: 0.2s ease-in;
+      }
+
+      .my-hidden1 {
+        display: none;
+      }
+
+      .show-transcript-btn1 {
+        margin-top: 30px;
+        background-color: #ff8a00;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        border-radius: 20px;
+        padding: 7px 14px;
+        cursor: pointer;
+        border: none;
+        transition: 0.5s ease-in-out;
+      }
+
+      .show-transcript-btn1:hover {
+        background-color: #d27204;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-player1">
+      <video
+        width="100%"
+        controls
+        poster="https://codefinity-content-media.s3.eu-west-1.amazonaws.com/code-1/react-pro/react-router/get-started-with-react-router-video-poster-v1.png"
+      >
+        <!-- Change the value for the src attribute into yours link -->
+        <source
+          src="https://codefinity-content-media.s3.eu-west-1.amazonaws.com/code-1/react-pro/react-router/get-started-recording.mp4"
+          type="video/mp4"
+          data-plyr-config='{
+          "quality": {
+            "default": "720",
+            "options": ["144", "240", "360", "480", "720", "1080"]
+          }
+        }'
+        />
+      </video>
+    </div>
+    <button class="show-transcript-btn1 js-show-transcript-btn1">
+      Show Transcript
+    </button>
+    <div class="transcript1 my-hidden1"></div>
+
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+    <script>
+      const showTranscriptBtn1 = document.querySelector(
+        ".js-show-transcript-btn1"
+      );
+
+      showTranscriptBtn1.addEventListener("click", handleClick1);
+
+      function handleClick1() {
+        const transcriptElement1 = document.querySelector(".transcript1");
+        transcriptElement1.classList.toggle("my-hidden1");
+
+        if (transcriptElement1.classList.contains("my-hidden1")) {
+          showTranscriptBtn1.textContent = "Show Transcript";
+        } else {
+          showTranscriptBtn1.textContent = "Hide Transcript";
+        }
+      }
+
+      const player1 = new Plyr(".custom-player1 video", {
+        controls: [
+          "play-large",
+          "play",
+          "progress",
+          "current-time",
+          "mute",
+          "volume",
+          "captions",
+          "settings",
+          "fullscreen",
+        ],
+        volume: 0.5,
+        muted: false,
+        settings: ["captions", "quality", "speed"],
+        captions: {
+          active: true,
+          language: "en",
+        },
+        fullscreen: {
+          enabled: true,
+          fallback: true,
+          iosNative: true,
+        },
+        speed: {
+          selected: 1,
+          options: [0.5, 1, 1.5, 2],
+        },
+        quality: {
+          default: "720",
+          options: ["144", "240", "360", "480", "720", "1080"],
+        },
+      });
+
+      player1.on("qualitychange", (event) => {
+        console.log(`Quality changed to ${event.quality}`);
+      });
+
+      player1.on("ratechange", (event) => {
+        console.log(`Speed changed to ${event.detail.plyr.speed}`);
+      });
+
+      /*
+          Change the transcript data:
+            - "start" is the time in seconds indicating from what time the text must be shown.
+            - "end" is the time in seconds indicating when the text must be hidden.
+            - "text" is the text to be shown.
+          NOTE: We can specify any time segments (any start/end). It doesn't have to be exactly 10s.
+        */
+      const transcriptData1 = [
+        {
+          start: 0,
+          end: 15,
+          text: "Let's get started using React Router library in our application. I have a basic React application with the default dependencies and default files. Inside of the source folder, I have deleted everything that I don't need.",
+        },
+        {
+          start: 15,
+          end: 31,
+          text: "I have only the index.js file, which is the root file of our app, and App file is so simple it returns the text. But now we have to add this package, like react-router-dom package to our application.",
+        },
+        {
+          start: 31,
+          end: 49,
+          text: "If we check our package.json in the dependencies, we have no additional packages. It is all by default from the React app. How we can do it? We go to the terminal right here and we have to install a new package.",
+        },
+        {
+          start: 49,
+          end: 75,
+          text: "It will be react-router-dom. What we do is npm install react-router-dom and press Enter. And just wait. And the package was already installed and it is right here. We see that the package was installed and we see its version right here.",
+        },
+      ];
+
+      const transcriptElement1 = document.querySelector(".transcript1");
+
+      function updateTranscript1(currentTime) {
+        // Clear previous transcript highlighting
+        transcriptElement1.querySelectorAll("p").forEach((p) => {
+          p.classList.remove("highlight1"); // Correct class name
+        });
+
+        // Find the current segment based on the current time
+        const currentSegment = transcriptData1.find(
+          (segment) =>
+            currentTime >= segment.start && currentTime <= segment.end
+        );
+
+        // Highlight the current segment's text
+        if (currentSegment) {
+          const currentSegmentElement = transcriptElement1.querySelector(
+            `p[data-start="${currentSegment.start}"][data-end="${currentSegment.end}"]`
+          );
+          if (currentSegmentElement) {
+            currentSegmentElement.classList.add("highlight1"); // Correct class name
+          }
+        }
+      }
+
+      function scrollToCurrentSegment1() {
+        const currentSegment = transcriptElement1.querySelector(".highlight1"); // Correct class name
+        if (currentSegment) {
+          const transcriptElementHeight = transcriptElement1.offsetHeight;
+          const segmentOffsetTop = currentSegment.offsetTop;
+          const segmentOffsetHeight = currentSegment.offsetHeight;
+
+          // Calculate the top and bottom positions of the current segment
+          const segmentTop = segmentOffsetTop - transcriptElement1.offsetTop;
+          const segmentBottom = segmentTop + segmentOffsetHeight;
+
+          // Calculate the center position of the transcript div
+          const transcriptCenter = transcriptElementHeight / 2;
+
+          // Calculate the scroll offset to center the current segment
+          const scrollOffset =
+            segmentOffsetTop -
+            transcriptElement1.offsetTop +
+            segmentOffsetHeight / 2 -
+            transcriptCenter;
+
+          transcriptElement1.scrollTo({
+            top: scrollOffset,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      player1.on("timeupdate", (event) => {
+        const currentTime = event.detail.plyr.currentTime;
+        updateTranscript1(currentTime);
+        scrollToCurrentSegment1();
+      });
+
+      const transcriptHTML1 = transcriptData1
+        .map(
+          (segment) =>
+            `<p data-start="${segment.start}" data-end="${segment.end}">${segment.text}</p>`
+        )
+        .join("");
+
+      transcriptElement1.innerHTML = transcriptHTML1;
+    </script>
+  </body>
+</html>
+
+<!-- ==================================== -->
+<!-- SECOND VIDEO -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    <style>
+      /* Custom Player Styles */
+      .custom-player2 .plyr--video .plyr__controls {
+        background-color: #1e2635;
+        padding-bottom: 15px;
+        padding-top: 15px;
+      }
+
+      .custom-player2 .plyr__control {
+        color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__control:hover,
+      .custom-player2 .plyr--video .plyr__control[aria-expanded="true"] {
+        color: white;
+      }
+
+      .custom-player2 .plyr__progress--played {
+        background-color: #4f5e77;
+      }
+
+      .custom-player2 .plyr__progress--buffer {
+        background-color: #36445c;
+      }
+
+      .custom-player2 .plyr__volume--display {
+        color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__control.plyr__tab-focus,
+      .custom-player2 .plyr__control[aria-expanded="true"] {
+        background-color: #ff8a00;
+        color: #323232;
+      }
+
+      .custom-player2 .plyr__menu__value[data-value="0.5"] {
+        color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__controls .plyr__controls__item.plyr__time {
+        font-size: 16px;
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      .custom-player2 .plyr__menu__container .plyr__control > span {
+        font-family: "Hind Siliguri", sans-serif;
+        align-items: inherit;
+        display: flex;
+        width: 100%;
+        color: #36445c;
+        font-size: 16px;
+      }
+
+      .custom-player2 .plyr__control--overlaid svg {
+        left: 5px;
+        position: relative;
+        fill: white;
+        width: 40px;
+        height: 40px;
+        margin: 10px;
+      }
+
+      .custom-player2 .plyr__progress .plyr__tooltip {
+        font-size: 16px;
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      .custom-player2 .plyr__progress input[type="range"] {
+        cursor: pointer;
+      }
+
+      .custom-player2 .plyr__control {
+        color: white;
+      }
+
+      .plyr__control.plyr__control--overlaid {
+        background-color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__progress input[type="range"] {
+        color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__volume input[type="range"] {
+        color: #ff8a00;
+        cursor: pointer;
+      }
+
+      .custom-player2 .plyr__control:hover {
+        background-color: #ff8a00;
+        color: white !important;
+      }
+
+      .custom-player2
+        .plyr__menu__container
+        .plyr__control[role="menuitemradio"][aria-checked="true"]:before {
+        background-color: #ff8a00;
+      }
+
+      .custom-player2 .plyr__control:hover span {
+        color: white;
+      }
+
+      .plyr--video {
+        border: 3px solid #4f5e77;
+        border-radius: 10px;
+      }
+
+      /* Custom Transcript Styles */
+      .transcript2 {
+        margin-top: 20px;
+        padding: 10px;
+        line-height: 1.5;
+        height: 200px;
+        overflow-y: auto;
+        border: 3px solid #4f5e77;
+        border-radius: 10px;
+        background-color: white;
+      }
+
+      .highlight2 {
+        background-color: #ff8a00;
+        color: white;
+        font-weight: 600;
+        padding: 5px;
+        transition: 0.2s ease-in;
+      }
+
+      .my-hidden2 {
+        display: none;
+      }
+
+      .show-transcript-btn2 {
+        margin-top: 30px;
+        background-color: #ff8a00;
+        font-family: inherit;
+        font-size: 18px;
+        font-weight: 600;
+        color: white;
+        border-radius: 20px;
+        padding: 7px 14px;
+        cursor: pointer;
+        border: none;
+        transition: 0.5s ease-in-out;
+      }
+
+      .show-transcript-btn2:hover {
+        background-color: #d27204;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-player2">
+      <video
+        width="100%"
+        controls
+        poster="https://codefinity-content-media.s3.eu-west-1.amazonaws.com/code-1/react-pro/react-router/get-started-with-react-router-video-poster-v1.png"
+      >
+        <!-- Change the value for the src attribute into yours link -->
+        <source
+          src="https://codefinity-content-media.s3.eu-west-1.amazonaws.com/code-1/react-pro/react-router/get-started-recording.mp4"
+          type="video/mp4"
+          data-plyr-config='{
+          "quality": {
+            "default": "720",
+            "options": ["144", "240", "360", "480", "720", "1080"]
+          }
+        }'
+        />
+      </video>
+    </div>
+    <button class="show-transcript-btn2 js-show-transcript-btn2">
+      Show Transcript
+    </button>
+    <div class="transcript2 my-hidden2"></div>
+
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+    <script>
+      const showTranscriptBtn2 = document.querySelector(
+        ".js-show-transcript-btn2"
+      );
+
+      showTranscriptBtn2.addEventListener("click", handleClick2);
+
+      function handleClick2() {
+        const transcriptElement2 = document.querySelector(".transcript2");
+        transcriptElement2.classList.toggle("my-hidden2");
+
+        if (transcriptElement2.classList.contains("my-hidden2")) {
+          showTranscriptBtn2.textContent = "Show Transcript";
+        } else {
+          showTranscriptBtn2.textContent = "Hide Transcript";
+        }
+      }
+
+      const player2 = new Plyr(".custom-player2 video", {
+        controls: [
+          "play-large",
+          "play",
+          "progress",
+          "current-time",
+          "mute",
+          "volume",
+          "captions",
+          "settings",
+          "fullscreen",
+        ],
+        volume: 0.5,
+        muted: false,
+        settings: ["captions", "quality", "speed"],
+        captions: {
+          active: true,
+          language: "en",
+        },
+        fullscreen: {
+          enabled: true,
+          fallback: true,
+          iosNative: true,
+        },
+        speed: {
+          selected: 1,
+          options: [0.5, 1, 1.5, 2],
+        },
+        quality: {
+          default: "720",
+          options: ["144", "240", "360", "480", "720", "1080"],
+        },
+      });
+
+      player2.on("qualitychange", (event) => {
+        console.log(`Quality changed to ${event.quality}`);
+      });
+
+      player2.on("ratechange", (event) => {
+        console.log(`Speed changed to ${event.detail.plyr.speed}`);
+      });
+
+      /*
+          Change the transcript data:
+            - "start" is the time in seconds indicating from what time the text must be shown.
+            - "end" is the time in seconds indicating when the text must be hidden.
+            - "text" is the text to be shown.
+          NOTE: We can specify any time segments (any start/end). It doesn't have to be exactly 10s.
+        */
+      const transcriptData2 = [
+        {
+          start: 0,
+          end: 15,
+          text: "Let's get started using React Router library in our application. I have a basic React application with the default dependencies and default files. Inside of the source folder, I have deleted everything that I don't need.",
+        },
+        {
+          start: 15,
+          end: 31,
+          text: "I have only the index.js file, which is the root file of our app, and App file is so simple it returns the text. But now we have to add this package, like react-router-dom package to our application.",
+        },
+        {
+          start: 31,
+          end: 49,
+          text: "If we check our package.json in the dependencies, we have no additional packages. It is all by default from the React app. How we can do it? We go to the terminal right here and we have to install a new package.",
+        },
+        {
+          start: 49,
+          end: 75,
+          text: "It will be react-router-dom. What we do is npm install react-router-dom and press Enter. And just wait. And the package was already installed and it is right here. We see that the package was installed and we see its version right here.",
+        },
+      ];
+
+      const transcriptElement2 = document.querySelector(".transcript2");
+
+      function updateTranscript2(currentTime) {
+        // Clear previous transcript highlighting
+        transcriptElement2.querySelectorAll("p").forEach((p) => {
+          p.classList.remove("highlight2"); // Correct class name
+        });
+
+        // Find the current segment based on the current time
+        const currentSegment = transcriptData2.find(
+          (segment) =>
+            currentTime >= segment.start && currentTime <= segment.end
+        );
+
+        // Highlight the current segment's text
+        if (currentSegment) {
+          const currentSegmentElement = transcriptElement2.querySelector(
+            `p[data-start="${currentSegment.start}"][data-end="${currentSegment.end}"]`
+          );
+          if (currentSegmentElement) {
+            currentSegmentElement.classList.add("highlight2"); // Correct class name
+          }
+        }
+      }
+
+      function scrollToCurrentSegment2() {
+        const currentSegment = transcriptElement2.querySelector(".highlight2"); // Correct class name
+        if (currentSegment) {
+          const transcriptElementHeight = transcriptElement2.offsetHeight;
+          const segmentOffsetTop = currentSegment.offsetTop;
+          const segmentOffsetHeight = currentSegment.offsetHeight;
+
+          // Calculate the top and bottom positions of the current segment
+          const segmentTop = segmentOffsetTop - transcriptElement2.offsetTop;
+          const segmentBottom = segmentTop + segmentOffsetHeight;
+
+          // Calculate the center position of the transcript div
+          const transcriptCenter = transcriptElementHeight / 2;
+
+          // Calculate the scroll offset to center the current segment
+          const scrollOffset =
+            segmentOffsetTop -
+            transcriptElement2.offsetTop +
+            segmentOffsetHeight / 2 -
+            transcriptCenter;
+
+          transcriptElement2.scrollTo({
+            top: scrollOffset,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      player2.on("timeupdate", (event) => {
+        const currentTime = event.detail.plyr.currentTime;
+        updateTranscript2(currentTime);
+        scrollToCurrentSegment2();
+      });
+
+      const transcriptHTML2 = transcriptData2
+        .map(
+          (segment) =>
+            `<p data-start="${segment.start}" data-end="${segment.end}">${segment.text}</p>`
+        )
+        .join("");
+
+      transcriptElement2.innerHTML = transcriptHTML2;
+    </script>
+  </body>
+</html>
